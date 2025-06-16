@@ -10,15 +10,28 @@ This repository contains both the **functional Django application** and **system
 ## 🗂️ Repository(Sticky-Note) Structure
 
 ```
-/
-├── sticky_notes/             # Full Django application
-│   ├── manage.py
-│   ├── requirements.txt
-│   ├── sticky_notes/         # Django project settings
-│   └── notes/                # Django app
+sticky_notes/
+|  ├── notes/
+│       ├── migrations/
 │       ├── templates/
+│          └── notes/
 │       ├── tests/
-│       └── ...
+│            ├── test_create.py
+│            ├── test_view.py
+│            ├── test_update.py
+│            └── test_delete.py
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── models.py
+│       ├── urls.py
+│       ├── views.py
+|   ├── sticky_notes/
+│       ├── __init__.py
+│       ├── settings.py
+│       ├── urls.py
+│       └── wsgi.py
+|   └──  manage.py
 ├── architecture design/      # UML diagrams and design documents
 │   ├── use_case_diagram.png
 │   ├── sequence_diagram.png
