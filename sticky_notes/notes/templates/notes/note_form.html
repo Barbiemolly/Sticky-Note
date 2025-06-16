@@ -1,0 +1,15 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% if form.instance.pk %}
+        <p><strong>Created at:</strong> {{ form.instance.created_at }}</p>
+        <p><strong>Last updated:</strong> {{ form.instance.updated_at }}</p>
+    {% endif %}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'note-list' %}">Back</a>
+{% endblock %}

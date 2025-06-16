@@ -1,0 +1,26 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+<!-- Debug print -->
+<p>Total Notes: {{ notes|length }}</p>
+<a href="{% url 'note-create' %}">+ Create New Note</a>
+<ul>
+    {% for note in notes %}
+        <li>
+            <strong>{{ note.title }}</strong><br>
+            {{ note.content|linebreaks }}
+            <br>
+            <small>
+                Created: {{ note.created_at|date:"Y-m-d H:i" }}<br>
+                {% if note.created_at != note.updated_at %}
+                  <em>Updated: {{ note.updated_at|date:"Y-m-d H:i" }}</em><br>
+                {% endif %}
+            </small>
+            <a href="{% url 'note-edit' note.pk %}">Edit</a> |
+            <a href="{% url 'note-delete' note.pk %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No notes found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
